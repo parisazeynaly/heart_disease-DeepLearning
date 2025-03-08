@@ -1,0 +1,38 @@
+name: Run Google Colab Notebook (Windows)
+
+on:
+  schedule:
+    - cron: '0 12 * * *'  # Runs every day at 12:00 UTC
+  workflow_dispatch:  # Allows manual execution from GitHub
+
+jobs:
+  run-colab:
+    runs-on: windows-latest  # ✅ Runs on Windows instead of Linux
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3  # Clones the repository
+
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install jupyter nbconvert pandas numpy
+
+      - name: Run Colab Notebook
+        run: |
+          jupyter nbconvert --to notebook --execute heart_disease_DeepLearning.ipynb
+
+      - name: Commit and Push Updated Notebook
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Uses GitHub authentication token
+        run: |
+          git config --global user.email "parisa.zeynaly@gmail.com          "
+          git config --global user.name "parisazeynaly"
+          git add heart_disease_DeepLearning.ipynb
+          git commit -m "Auto-updated Colab Notebook"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/parisazeynaly/heart_disease-DeepLearning.git HEAD:main
