@@ -1,0 +1,7 @@
+uvicorn==0.34.0
+fastapi==0.100.0  # نسخه‌ای که با tensorflow سازگار باشه
+pandas==2.2.0
+numpy<2  # جلوگیری از ناسازگاری NumPy 2.0
+scikit-learn==1.3.0
+tensorflow==2.12.1
+typing-extensions==4.5.0  # هماهنگ با tensorflow
