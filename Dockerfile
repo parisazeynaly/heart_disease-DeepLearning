@@ -9,4 +9,5 @@ COPY . .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "train_model.py"]
+#CMD ["python", "train_model.py"]
+CMD ["gunicorn", "api:app", "--bind", "0.0.0.0:10000"]
