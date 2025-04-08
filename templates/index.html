@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Heart Disease Prediction</title>
+</head>
+<body>
+    <h2>Heart Disease Prediction Form</h2>
+    <form action="/predict" method="POST">
+        <label>Age: <input type="number" name="age" step="any" required></label><br>
+        <label>Sex (1=Male, 0=Female): <input type="number" name="sex" step="any" required></label><br>
+        <label>Chest Pain Type (0–3): <input type="number" name="cp" step="any" required></label><br>
+        <label>Resting Blood Pressure: <input type="number" name="trestbps" step="any" required></label><br>
+        <label>Cholesterol: <input type="number" name="chol" step="any" required></label><br>
+        <label>Fasting Blood Sugar > 120 (1 = true; 0 = false): <input type="number" name="fbs" step="any" required></label><br>
+        <label>Resting ECG Results (0–2): <input type="number" name="restecg" step="any" required></label><br>
+        <label>Max Heart Rate Achieved: <input type="number" name="thalach" step="any" required></label><br>
+        <label>Exercise Induced Angina (1 = yes; 0 = no): <input type="number" name="exang" step="any" required></label><br>
+        <label>Oldpeak (ST depression): <input type="number" name="oldpeak" step="any" required></label><br>
+        <label>Thal (1 = normal; 2 = fixed defect; 3 = reversible defect): <input type="number" name="thal" step="any" required></label><br>
+
+        <br><button type="submit">Predict</button>
+    </form>
+</body>
+</html>
